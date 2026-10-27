@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mau ga jadi pacar aku</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
+body{background:#FFF6F8;height:100vh;display:flex;justify-content:center;align-items:center;overflow:hidden}
+.box{text-align:center;width:100%;max-width:500px;padding:20px}
+h1{color:#E9447A;font-size:28px;font-weight:900}
+.btns{margin-top:22px;display:flex;justify-content:center;gap:24px;align-items:center;height:150px;position:relative}
+button{border:none;border-radius:16px;padding:14px 32px;font-weight:900;font-size:18px;cursor:pointer;transition:all .3s cubic-bezier(.34,1.56,.64,1)}
+#yes{background:#2ECC71;color:white;box-shadow:0 7px 0 #219150;z-index:5}
+#no{background:#FF4D4D;color:white;box-shadow:0 7px 0 #b82e2e}
+.idle{animation:idle 1.5s infinite alternate ease-in-out}
+@keyframes idle{0%{transform:translateY(0)}100%{transform:translateY(-7px)}}
+#final{display:none}
+.hug{animation:hug 0.9s infinite alternate ease-in-out}
+@keyframes hug{0%{transform:translateY(0) rotate(-1deg)}100%{transform:translateY(-8px) rotate(1deg)}}
+.heart{width:28px;height:28px;background:#FF2D68;transform:rotate(-45deg);margin:16px auto;position:relative;animation:pop .9s infinite}
+.heart:before,.heart:after{content:'';width:28px;height:28px;background:#FF2D68;border-radius:50%;position:absolute}
+.heart:before{top:-14px;left:0}.heart:after{left:14px;top:0}
+@keyframes pop{0%,100%{transform:rotate(-45deg) scale(1)}50%{transform:rotate(-45deg) scale(1.3)}}
+</style>
+</head>
+<body>
+<div class="box" id="main">
+<h1>mau ga kamu jadi pacar aku</h1>
+<div class="btns">
+<button id="yes">Yes</button>
+<button id="no">No</button>
+</div>
+<div class="idle" id="catIdle">
+<svg width="200" height="170" viewBox="0 0 200 170">
+<ellipse cx="100" cy="145" rx="60" ry="18" fill="#7AC8FF" opacity=".8"/>
+<rect x="55" y="90" width="90" height="55" rx="28" fill="#7AC8FF"/>
+<circle cx="100" cy="65" r="52" fill="#7AC8FF"/>
+<ellipse cx="50" cy="22" rx="18" ry="24" fill="#7AC8FF"/><ellipse cx="150" cy="22" rx="18" ry="24" fill="#7AC8FF"/>
+<ellipse cx="50" cy="28" rx="8" ry="12" fill="#FFA6C1"/><ellipse cx="150" cy="28" rx="8" ry="12" fill="#FFA6C1"/>
+<circle cx="77" cy="64" r="8" fill="black"/><circle cx="123" cy="64" r="8" fill="black"/><circle cx="79" cy="62" r="2.5" fill="white"/><circle cx="125" cy="62" r="2.5" fill="white"/>
+<ellipse cx="52" cy="76" rx="11" ry="7" fill="#FF8AA8" opacity=".8"/><ellipse cx="148" cy="76" rx="11" ry="7" fill="#FF8AA8" opacity=".8"/>
+<path d="M88 80 Q100 88 112 80" stroke="black" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+<ellipse cx="65" cy="115" rx="14" ry="12" fill="#5FB6F0"/><ellipse cx="135" cy="115" rx="14" ry="12" fill="#5FB6F0"/>
+</svg>
+</div>
+<p id="sub" style="color:#bbb;font-size:13px;margin-top:4px">no nya jangan di pencet</p>
+</div>
+
+<div class="box" id="final">
+<h1>Knew you would say yes</h1>
+<div class="hug">
+<svg width="320" height="180" viewBox="0 0 320 180">
+<ellipse cx="115" cy="150" rx="50" ry="18" fill="#FFC2D1"/><ellipse cx="205" cy="150" rx="50" ry="18" fill="#7AC8FF"/>
+<rect x="75" y="95" width="70" height="52" rx="24" fill="#FFC2D1"/><rect x="175" y="95" width="70" height="52" rx="24" fill="#7AC8FF"/>
+<circle cx="110" cy="62" r="44" fill="#FFC2D1"/><circle cx="210" cy="62" r="44" fill="#7AC8FF"/>
+<ellipse cx="70" cy="24" rx="15" ry="20" fill="#FFC2D1"/><ellipse cx="140" cy="24" rx="15" ry="20" fill="#FFC2D1"/>
+<ellipse cx="180" cy="24" rx="15" ry="20" fill="#7AC8FF"/><ellipse cx="250" cy="24" rx="15" ry="20" fill="#7AC8FF"/>
+<circle cx="95" cy="65" r="5" fill="black"/><path d="M92 72 Q95 77 102 73" stroke="black" fill="none" stroke-width="1.5"/>
+<circle cx="125" cy="65" r="5" fill="black"/>
+<circle cx="195" cy="65" r="5" fill="black"/><circle cx="225" cy="65" r="5" fill="black"/>
+<path d="M90 75 Q110 85 130 75" stroke="black" stroke-width="1.5" fill="none" opacity="0"/>
+<path d="M145 95 Q160 105 175 95" stroke="#FF8AA8" stroke-width="16" stroke-linecap="round" fill="none"/>
+<path d="M175 95 Q160 105 145 95" stroke="#7AC8FF" stroke-width="16" stroke-linecap="round" fill="none"/>
+</svg>
+</div>
+<p style="color:#E9447A;font-weight:800;font-size:20px">makasih ya udah mau jadi pacar aku</p>
+<div class="heart"></div>
+</div>
+
+<script>
+const noBtn=document.getElementById('no');
+const yesBtn=document.getElementById('yes');
+const sub=document.getElementById('sub');
+let yesS=1; let noS=1;
+function kabur(){
+  const x=Math.random()*(window.innerWidth-140);
+  const y=Math.random()*(window.innerHeight-140);
+  noBtn.style.position='fixed';
+  noBtn.style.left=x+'px';
+  noBtn.style.top=y+'px';
+  yesS+=0.5;
+  noS-=0.14;
+  if(noS<0.2) noS=0.2;
+  yesBtn.style.transform='scale('+yesS+')';
+  noBtn.style.transform='scale('+noS+')';
+  sub.textContent=['no nya kabur','plis yes aja','jangan no dong'][Math.floor(Math.random()*3)];
+  if(yesS>4.5){
+    yesBtn.style.position='fixed';
+    yesBtn.style.left='50%';
+    yesBtn.style.top='50%';
+    yesBtn.style.transform='translate(-50%,-50%) scale('+yesS+')';
+    yesBtn.style.fontSize='28px';
+    yesBtn.style.padding='30px 70px';
+  }
+}
+noBtn.addEventListener('mouseenter',kabur);
+noBtn.addEventListener('touchstart',kabur);
+noBtn.addEventListener('click',kabur);
+yesBtn.addEventListener('click',()=>{
+  document.getElementById('main').style.display='none';
+  document.getElementById('final').style.display='block';
+  document.body.style.background='#FFEAF0';
+});
+</script>
+</body>
+</html>
